@@ -1,0 +1,50 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+:root {
+    --bg-body: #ffffff;
+    --text-main: #333333;
+    --accent-color: #0066cc;
+    --card-bg: #f4f4f4;
+
+    color-scheme: light;
+}
+
+[data-theme="dark"] {
+    --bg-body: #121212;
+    --text-main: #e0e0e0;
+    --accent-color: #4da6ff;
+    --card-bg: #1e1e1e;
+
+    color-scheme: dark;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --bg-body: #121212;
+        --text-main: #e0e0e0;
+        --accent-color: #4da6ff;
+        --card-bg: #1e1e1e;
+
+        color-scheme: dark;
+    }
+} */
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Main styling starts */
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+body > main{
+    flex: 1;
+}
