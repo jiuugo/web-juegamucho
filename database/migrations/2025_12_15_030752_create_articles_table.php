@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->integer('id_brand');
-            $table->integer('id_category');
+
+            $table->foreignId('brand_id')->constrained('brands');
+            $table->foreignId('category_id')->constrained('categories');
+            // Esto crea la columna unsignedBigInteger + la foreign key en una sola línea
+
             $table->text('description')->nullable();
             $table->integer('min_age')->nullable();
             $table->integer('max_age')->nullable();

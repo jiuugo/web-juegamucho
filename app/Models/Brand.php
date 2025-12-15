@@ -9,4 +9,9 @@ class Brand extends Model
     protected $table = 'brands';
     protected $fillable = ['name'];
     protected $hidden = [];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }
