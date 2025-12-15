@@ -17,7 +17,6 @@ return new class extends Migration
 
             $table->foreignId('brand_id')->constrained('brands');
             $table->foreignId('category_id')->constrained('categories');
-            // Esto crea la columna unsignedBigInteger + la foreign key en una sola línea
 
             $table->text('description')->nullable();
             $table->integer('min_age')->nullable();
