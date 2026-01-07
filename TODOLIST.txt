@@ -1,0 +1,12 @@
+HECHO
+-base de datos con catalogo
+
+
+POR HACER
+-Implementar login
+-Hacer sistema de roles, (invitado, cliente, admin)
+-Mirar como se podía usar lo de los roles para cambiar ciertas cosas segun el usuario.
+
+-Página muestra artículos con filtros y ordenar por precio.
+
+-Hacer carrito.
