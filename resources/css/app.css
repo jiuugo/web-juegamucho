@@ -45,6 +45,24 @@ body {
     min-height: 100dvh;
 }
 
-body > main{
+body>main {
     flex: 1;
+}
+
+
+.login-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
 }
