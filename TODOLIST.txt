@@ -10,3 +10,6 @@ POR HACER
 -Página muestra artículos con filtros y ordenar por precio.
 
 -Hacer carrito.
+
+
+-Hacer que el usuario por defecto tenga rol usuario.
