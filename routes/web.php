@@ -7,6 +7,6 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');
+Auth::routes();
 
-Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
