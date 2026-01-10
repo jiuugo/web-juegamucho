@@ -24,6 +24,15 @@ class ArticleController extends Controller
             $articles->where('category_id', $request->input('category'));
         }
 
+        if ($request->filled('max_price')) {
+            $articles->where('price', '<=', $request->input('max_price'));
+        }
+
+        if ($request->filled('age')) {
+            $articles->where('min_age', '<=', $request->input('age'))
+                ->where('max_age', '>=', $request->input('age'));
+        }
+
         $articles = $articles->get();
 
         $brands = Brand::all();
