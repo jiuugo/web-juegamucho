@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('page-title', $article->name)
+@section('page-title', 'Juega Mucho | ' . $article->name)
 @section('main-content')
     <div>
         <h1>{{ $article->name }}</h1>

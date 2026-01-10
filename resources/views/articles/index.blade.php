@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('page-title', 'Lista de Artículos')
+@section('page-title', 'Juega Mucho | Lista de Artículos')
 @section('main-content')
     <div>
         <h1>Lista de Artículos</h1>

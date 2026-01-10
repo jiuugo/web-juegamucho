@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -21,7 +23,14 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+
+        $brands = Brand::all();
+        $categories = Category::all();
+
+        return view('articles.create')->with([
+            'brands' => $brands,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -29,7 +38,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $rules = [
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0|max:99999999.99',
+            'brand_id' => 'required|exists:brands,id',
+            'category_id' => 'required|exists:categories,id',
+            'min_age' => 'required|integer|min:0|max:120',
+            'max_age' => 'required|integer|min:0|gte:min_age|max:120',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $article = Article::create($validatedData);
+
+        return view('articles.show')->with(['article' => $article]);
     }
 
     /**
@@ -37,7 +60,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('articles.show')->with('article', $article);
+        return view('articles.show')->with(['article' => $article]);
     }
 
     /**
@@ -45,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('articles.edit')->with(['article' => $article]);
     }
 
     /**
