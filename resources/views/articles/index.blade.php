@@ -40,6 +40,7 @@
                         <input type="number" name="age" id="age" value="{{ request('age') }}">
                     </div>
                     <button type="submit">Aplicar Filtros</button>
+                    <button><a href="{{ route('articles.index') }}">Limpiar Filtros</a></button>
                 </form>
             </div>
             <div>

@@ -4,6 +4,7 @@ HECHO
 ###-Hacer sistema de roles, (invitado, cliente, admin)
 ###-Hacer que el usuario por defecto tenga rol usuario.
 -Página muestra artículos con filtros y ordenar por precio.
+-Hacer carrito.
 
 
 POR HACER
@@ -17,7 +18,7 @@ POR HACER
 -Mirar como se podía usar lo de los roles para cambiar ciertas cosas segun el usuario.
 
 
+-Probar carrito
 
--Hacer carrito.
 
 
