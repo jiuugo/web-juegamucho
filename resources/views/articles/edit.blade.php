@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('page-title', 'Juega Mucho | Editar Artículo')
+@section('page-title', 'Juega Mucho | Editar ' . $article->name)
 @section('main-content')
     <div>
         <h1>Editar Artículo</h1>

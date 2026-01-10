@@ -12,10 +12,28 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::all();
-        return view('articles.index')->with('articles', $articles);
+        $articles = Article::query();
+
+        if ($request->filled('brand')) {
+            $articles->where('brand_id', $request->input('brand'));
+        }
+
+        if ($request->filled('category')) {
+            $articles->where('category_id', $request->input('category'));
+        }
+
+        $articles = $articles->get();
+
+        $brands = Brand::all();
+        $categories = Category::all();
+
+        return view('articles.index')->with([
+            'articles' => $articles,
+            'brands' => $brands,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -68,7 +86,14 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('articles.edit')->with(['article' => $article]);
+        $brands = Brand::all();
+        $categories = Category::all();
+
+        return view('articles.edit')->with([
+            'article' => $article,
+            'brands' => $brands,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -76,7 +101,21 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $rules = [
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0|max:99999999.99',
+            'brand_id' => 'required|exists:brands,id',
+            'category_id' => 'required|exists:categories,id',
+            'min_age' => 'required|integer|min:0|max:120',
+            'max_age' => 'required|integer|min:0|gte:min_age|max:120',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $article->update($validatedData);
+
+        return view('articles.show')->with(['article' => $article]);
     }
 
     /**
@@ -84,6 +123,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->route('articles.index');
     }
 }
