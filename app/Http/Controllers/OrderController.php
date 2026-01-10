@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class OrderController extends Controller
 {
@@ -11,7 +13,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::all();
+        return view('orders.index')->with(['orders' => $orders]);
     }
 
     /**
@@ -35,7 +38,8 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('orders.show')->with(['order' => $order]);
     }
 
     /**
