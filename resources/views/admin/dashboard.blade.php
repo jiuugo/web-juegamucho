@@ -1,10 +1,8 @@
 @extends('layouts.admin')
 @section('page-title', 'Inicio')
 @section('main-content')
-    <h1>Hola mundo</h1>
-    @role('admin')
-        <p>Contenido solo para administradores.</p>
-    @else
-        <p>Contenido para usuarios normales.</p>
-    @endrole
+    <div>
+        <h1>Bienvenido al Panel de Administración</h1>
+        <p>Desde aquí puedes gestionar el contenido de la web.</p>
+    </div>
 @endsection
