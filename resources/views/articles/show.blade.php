@@ -4,7 +4,8 @@
     <div class="card">
         <div class="row-start">
             <div class="media-col">
-                <img src="{{ asset('images/articulos/' . $article->image) }}" alt="{{ $article->name }}" class="article-image">
+                <img src="{{ $article->image ? asset('images/articulos/' . $article->image) : asset('images/no-image.png') }}"
+                    alt="{{ $article->name }}" class="article-image">
             </div>
             <div class="flex-1">
                 <h1>{{ $article->name }}</h1>

@@ -124,7 +124,7 @@ class ArticleController extends Controller
 
         $article = Article::create($validatedData);
 
-        return view('articles.show')->with(['article' => $article]);
+        return redirect()->route('articles.show', $article)->with('success', 'Artículo añadido');
     }
 
     /**
@@ -178,7 +178,7 @@ class ArticleController extends Controller
 
         $article->update($validatedData);
 
-        return view('admin.articles.show')->with(['article' => $article]);
+        return redirect()->route('dashboard.articles')->with('success', 'Artículo actualizado');
     }
 
     /**
@@ -188,6 +188,6 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect()->route('dashboard.articles');
+        return redirect()->route('dashboard.articles')->with('success', 'Artículo eliminado');
     }
 }

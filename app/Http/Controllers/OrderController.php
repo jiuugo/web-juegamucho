@@ -62,7 +62,7 @@ class OrderController extends Controller
 
         session()->forget('cart');
 
-        return redirect()->route('orders.show', $order->id);
+        return redirect()->route('orders.show', $order->id)->with('success', 'Pedido realizado con éxito');
     }
 
     /**
