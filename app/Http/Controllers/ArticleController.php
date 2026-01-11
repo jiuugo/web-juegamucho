@@ -91,7 +91,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('articles.show')->with(['article' => $article]);
+        $cart = session()->get('cart', []);
+
+        return view('articles.show')->with(['article' => $article, 'cart' => $cart]);
     }
 
     /**

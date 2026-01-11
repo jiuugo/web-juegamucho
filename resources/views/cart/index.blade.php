@@ -19,12 +19,12 @@
                     <tbody>
                         @foreach ($cartItems as $item)
                             <tr>
-                                <td>{{ $item->article->name }}</td>
-                                <td>{{ $item->quantity }}</td>
-                                <td>{{ $item->article->price }}€</td>
-                                <td>{{ $item->article->price * $item->quantity }}€</td>
+                                <td>{{ $item['name'] }}</td>
+                                <td>{{ $item['quantity'] }}</td>
+                                <td>{{ $item['price'] ?? 'cambiar' }}€</td>
+                                <td>{{ ($item['price'] ?? 0) * $item['quantity'] }}€</td>
                                 <td>
-                                    <form action="{{ route('cart.remove', $item->article->id) }}" method="POST">
+                                    <form action="{{ route('cart.remove', $item['id']) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">Eliminar</button>
@@ -42,8 +42,9 @@
                     @method('DELETE')
                     <button type="submit">Vaciar Carrito</button>
                 </form>
-                <form action="{{ route('order.add') }}" method="POST">
+                <form action="{{ route('order.store') }}" method="POST">
                     @csrf
+
                     <button type="submit">Realizar Pedido</button>
                 </form>
             @else

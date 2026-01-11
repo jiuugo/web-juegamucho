@@ -30,7 +30,34 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cart = session()->get('cart', []);
+
+        if (empty($cart)) {
+            return view('cart.index');
+        }
+
+        $totalPrice = 0;
+        foreach ($cart as $item) {
+            $totalPrice += ($item['price'] ?? 0) * $item['quantity'];
+        }
+
+        $order = Order::create([
+            'total_price' => $totalPrice,
+            'user_id' => auth()->id(),
+        ]);
+
+        foreach ($cart as $item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'article_id' => $item['id'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'] ?? 0,
+            ]);
+        }
+
+        session()->forget('cart');
+
+        return redirect()->route('orders.show', $order->id);
     }
 
     /**

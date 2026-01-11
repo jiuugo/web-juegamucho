@@ -19,6 +19,7 @@ class CartService
             $cart[$Article->id] = [
                 "id" => $Article->id,
                 "name" => $Article->name,
+                "price" => $Article->price,
                 "quantity" => $quantity
             ];
         }

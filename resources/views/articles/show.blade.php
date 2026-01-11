@@ -10,7 +10,24 @@
             <p>Categoría: {{ $article->category->name }}</p>
             <p>Precio: {{ $article->price }}€</p>
             <p>Edad recomendada de {{ $article->min_age }} a {{ $article->max_age }} años.</p>
-            <a href="{{ route('articles.index') }}">Volver a la lista de artículos</a>
         </div>
+        @auth
+            <div>
+                <p>{{ isset($cart[$article->id]) ? $cart[$article->id]['quantity'] : 0 }} unidades en
+                    el
+                    carrito</p>
+            </div>
+            <form action="{{ route('cart.add', $article->id) }}" method="post">
+                @csrf
+                <button type="submit"><span class="material-icons">
+                        add_shopping_cart
+                    </span></button>
+            </form>
+        @else
+            <button><a href="{{ route('login') }}"><span class="material-icons">
+                        add_shopping_cart
+                    </span></a></button>
+        @endauth
+        <a href="{{ route('articles.index') }}">Volver a la lista de artículos</a>
     </div>
 @endsection

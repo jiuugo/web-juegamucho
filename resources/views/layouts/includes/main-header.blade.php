@@ -18,7 +18,7 @@
 
     <div class="iconos">
         <span class="material-icons">search</span>
-        <span class="material-icons">shopping_cart</span>
+        <span class="material-icons"><a href="{{ route('cart.index') }}">shopping_cart</a></span>
         @auth
             <span>
                 <span class="material-icons">

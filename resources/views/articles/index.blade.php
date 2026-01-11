@@ -60,8 +60,9 @@
                                 </div>
                                 @auth
                                     <div>
-                                        <p>En el carrito</p>
-                                        <p>{{ isset($cart[$article->id]) ? $cart[$article->id]['quantity'] : 0 }}</p>
+                                        <p>{{ isset($cart[$article->id]) ? $cart[$article->id]['quantity'] : 0 }} unidades en
+                                            el
+                                            carrito</p>
                                     </div>
                                     <form action="{{ route('cart.add', $article->id) }}" method="post">
                                         @csrf

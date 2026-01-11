@@ -24,3 +24,8 @@ POR HACER
 -Crear en el header una ventana flotante que muestre mensajes de lo que ocurre.
 
 
+
+Nav admin
+    lista articulos
+    list orders
+    lista 

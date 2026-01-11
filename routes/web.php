@@ -18,6 +18,7 @@ Route::post('/cart/clear', [App\Http\Controllers\CartController::class, 'clear']
 
 
 Route::resource('orders', 'App\Http\Controllers\OrderController');
+Route::post('/orders/create', [App\Http\Controllers\OrderController::class, 'store'])->name('order.store');
 
 
 Route::get('/articulos', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');
