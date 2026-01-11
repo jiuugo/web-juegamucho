@@ -2,11 +2,11 @@
 @section('page-title', 'Gestión de Pedidos')
 @section('main-content')
     <div>
-        <h1>Gestión de Pedidos</h1>
+        <h1>Lista de Pedidos</h1>
         <div>
             {{ count($orders) }} pedido(s) realizados.
             @if (count($orders) > 0)
-                <table>
+                <table class="table-admin">
                     <thead>
                         <tr>
                             <th>ID del Pedido</th>
@@ -22,7 +22,8 @@
                                 <td>{{ $order->user->name }}</td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->total_price }}€</td>
-                                <td><a href="{{ route('orders.show', $order->id) }}">Ver Detalle</a></td>
+                                <td><a href="{{ route('orders.show', $order->id) }}" class="btn btn-ghost">Ver Detalle</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

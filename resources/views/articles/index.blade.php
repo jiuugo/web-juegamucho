@@ -1,11 +1,15 @@
 @extends('layouts.main')
 @section('page-title', 'Juega Mucho | Lista de Artículos')
 @section('main-content')
-    <div>
-        <h1>Lista de Artículos</h1>
-        <div>
-            <h1>Filtros</h1>
-            <div>
+    <div class="">
+        <header class="row-between">
+            <h1>Lista de Artículos</h1>
+            <div class="muted">Mostrando {{ $articles->count() }} artículos</div>
+        </header>
+
+        <div class="row-start">
+            <aside class="card aside-card">
+                <h3>Filtros</h3>
                 <form action="{{ route('articles.index') }}" method="GET">
                     <div>
                         <label for="brand">Marca:</label>
@@ -39,49 +43,48 @@
                         <label for="age">Edad del Niño:</label>
                         <input type="number" name="age" id="age" value="{{ request('age') }}">
                     </div>
-                    <button type="submit">Aplicar Filtros</button>
-                    <button><a href="{{ route('articles.index') }}">Limpiar Filtros</a></button>
+                    <div class="btn-group mt-sm">
+                        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                        <a href="{{ route('articles.index') }}" class="btn btn-ghost">Limpiar</a>
+                    </div>
                 </form>
-            </div>
-            <div>
-                @if ($articles->count() > 0)
-                    @foreach ($articles as $article)
-                        <div>
-                            <a href="{{ route('articles.show', $article->id) }}">
-                                <img src="{{ asset('images/articulos/' . $article->image) }}" alt="{{ $article->name }}"
-                                    width="300">
-                                <h2>{{ $article->name }}</h2>
-                            </a>
-                            <div>
-                                <div>
-                                    <p>{{ $article->brand->name }}</p>
-                                    <p>{{ $article->category->name }}</p>
-                                    <h3>{{ $article->price }}€</h3>
-                                </div>
-                                @auth
-                                    <div>
-                                        <p>{{ isset($cart[$article->id]) ? $cart[$article->id]['quantity'] : 0 }} unidades en
-                                            el
-                                            carrito</p>
-                                    </div>
-                                    <form action="{{ route('cart.add', $article->id) }}" method="post">
-                                        @csrf
-                                        <button type="submit"><span class="material-icons">
-                                                add_shopping_cart
-                                            </span></button>
-                                    </form>
-                                @else
-                                    <button><a href="{{ route('login') }}"><span class="material-icons">
-                                                add_shopping_cart
-                                            </span></a></button>
-                                @endauth
-                            </div>
+            </aside>
 
-                        </div>
-                    @endforeach
+            <section class="flex-1">
+                @if ($articles->count() > 0)
+                    <div class="grid">
+                        @foreach ($articles as $article)
+                            <article class="card">
+                                <a href="{{ route('articles.show', $article->id) }}" class="article-link">
+                                    <img src="{{ $article->image ? asset('images/articulos/' . $article->image) : asset('images/no-image.png') }}"
+                                        alt="{{ $article->name }}" class="article-image">
+                                    <h3 class="article-title">{{ $article->name }}</h3>
+                                </a>
+                                <div class="card-actions">
+                                    <div>
+                                        <p class="muted">{{ $article->brand->name }} · {{ $article->category->name }}</p>
+                                        <strong>{{ $article->price }}€</strong>
+                                    </div>
+                                    <div>
+                                        @auth
+                                            <form action="{{ route('cart.add', $article->id) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary"><span
+                                                        class="material-icons">add_shopping_cart</span></button>
+                                            </form>
+                                        @else
+                                            <a href="{{ route('login') }}" class="btn btn-primary"><span
+                                                    class="material-icons">add_shopping_cart</span></a>
+                                        @endauth
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
                 @else
                     <p>No se encontraron artículos que coincidan con los filtros aplicados.</p>
                 @endif
-            </div>
+            </section>
         </div>
-    @endsection
+    </div>
+@endsection

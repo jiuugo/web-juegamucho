@@ -4,6 +4,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
@@ -25,3 +27,5 @@ Route::post('/orders/create', [App\Http\Controllers\OrderController::class, 'sto
 
 
 Route::get('/articulos', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');
+
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');

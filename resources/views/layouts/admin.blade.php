@@ -19,7 +19,7 @@
 
 <body>
     @include('layouts.includes.admin-header')
-    <main>
+    <main class="site-main container py-4">
         @yield('main-content')
     </main>
     @include('layouts.includes.admin-footer')
