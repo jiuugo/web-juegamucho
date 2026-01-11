@@ -12,11 +12,11 @@
                 </div>
                 <div class="contact-item">
                     <span class="material-icons">phone</span>
-                    <p>+34 987 654 321</p>
+                    <p>+34 987 84 63 15</p>
                 </div>
                 <div class="contact-item">
                     <span class="material-icons">location_on</span>
-                    <p>Calle Principal, 123, Madrid, España</p>
+                    <p>Av. el Romeral, 125, 24191 Villabalter, León</p>
                 </div>
             </div>
         </div>
