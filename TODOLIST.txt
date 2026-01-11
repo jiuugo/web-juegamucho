@@ -21,4 +21,6 @@ POR HACER
 -Probar carrito
 
 
+-Crear en el header una ventana flotante que muestre mensajes de lo que ocurre.
+
 

@@ -9,8 +9,6 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::resource('articles', 'App\Http\Controllers\ArticleController');
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
@@ -20,3 +18,6 @@ Route::post('/cart/clear', [App\Http\Controllers\CartController::class, 'clear']
 
 
 Route::resource('orders', 'App\Http\Controllers\OrderController');
+
+
+Route::get('/articulos', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');

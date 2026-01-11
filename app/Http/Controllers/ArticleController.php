@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -38,10 +39,13 @@ class ArticleController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
 
+        $cart = session()->get('cart', []);
+
         return view('articles.index')->with([
             'articles' => $articles,
             'brands' => $brands,
-            'categories' => $categories
+            'categories' => $categories,
+            'cart' => $cart
         ]);
     }
 

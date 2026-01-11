@@ -2,6 +2,7 @@
 @section('page-title', 'Juega Mucho | ' . $article->name)
 @section('main-content')
     <div>
+        <img src="{{ asset('images/articulos/' . $article->image) }}" alt="{{ $article->name }}" width="300">
         <h1>{{ $article->name }}</h1>
         <div>
             <p>{{ $article->description }}</p>

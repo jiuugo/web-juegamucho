@@ -47,11 +47,35 @@
                 @if ($articles->count() > 0)
                     @foreach ($articles as $article)
                         <div>
-                            <h2>{{ $article->name }}</h2>
-                            <p>{{ $article->brand->name }}</p>
-                            <p>{{ $article->category->name }}</p>
-                            <p>{{ $article->price }}€</p>
-                            <a href="{{ route('articles.show', $article->id) }}">Leer más</a>
+                            <a href="{{ route('articles.show', $article->id) }}">
+                                <img src="{{ asset('images/articulos/' . $article->image) }}" alt="{{ $article->name }}"
+                                    width="300">
+                                <h2>{{ $article->name }}</h2>
+                            </a>
+                            <div>
+                                <div>
+                                    <p>{{ $article->brand->name }}</p>
+                                    <p>{{ $article->category->name }}</p>
+                                    <h3>{{ $article->price }}€</h3>
+                                </div>
+                                @auth
+                                    <div>
+                                        <p>En el carrito</p>
+                                        <p>{{ isset($cart[$article->id]) ? $cart[$article->id]['quantity'] : 0 }}</p>
+                                    </div>
+                                    <form action="{{ route('cart.add', $article->id) }}" method="post">
+                                        @csrf
+                                        <button type="submit"><span class="material-icons">
+                                                add_shopping_cart
+                                            </span></button>
+                                    </form>
+                                @else
+                                    <button><a href="{{ route('login') }}"><span class="material-icons">
+                                                add_shopping_cart
+                                            </span></a></button>
+                                @endauth
+                            </div>
+
                         </div>
                     @endforeach
                 @else

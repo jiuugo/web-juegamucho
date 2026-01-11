@@ -1,1 +1,5 @@
-<h1>Admin footer</h1>
+<footer>
+    <div>
+        <p>© {{ date('Y') }} JuegaMucho. Todos los derechos reservados.</p>
+    </div>
+</footer>
