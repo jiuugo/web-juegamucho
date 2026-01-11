@@ -1,5 +1,7 @@
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
+@import './flash-toast.css';
+
 :root {
     --bg-body: #ffffff;
     --text-main: #333333;

@@ -36,3 +36,13 @@
     </div>
 
 </header>
+
+@if (session('success'))
+    <div id="flash-toast" class="flash-toast">
+        <div class="flash-content">
+            <strong>Éxito</strong>
+            <p>{{ session('success') }}</p>
+        </div>
+        <button class="flash-close" aria-label="Cerrar">&times;</button>
+    </div>
+@endif
