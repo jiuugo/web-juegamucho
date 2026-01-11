@@ -6,7 +6,7 @@
             <h1>Encuentra juguetes para todos las edades</h1>
             <p>Explora nuestra amplia gama de juguetes para niños de todas las edades. Desde los más pequeños hasta los más
                 grandes, tenemos algo especial para cada etapa de la infancia.</p>
-            <button><a href="">Explorar Juguetes</a></button>
+            <button><a href="{{ route('articles') }}">Explorar Juguetes</a></button>
         </div>
         <img src="" alt="niños jugando con juguetes">
     </section>

@@ -20,7 +20,7 @@
             </span>
             <span>{{ Auth::user()->name }}</span>
         </span>
-        <form action="" method="post">
+        <form action="{{ route('logout') }}" method="post">
             @csrf
             <button type="submit">Cerrar Sesión</button>
         </form>
