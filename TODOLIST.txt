@@ -5,27 +5,22 @@ HECHO
 ###-Hacer que el usuario por defecto tenga rol usuario.
 -Página muestra artículos con filtros y ordenar por precio.
 -Hacer carrito.
+-Comprobar que funciona el editar.
+-Comprobar que al editar pero al esquivocarse se quedan los nuevos valores que has puesto.
+-Mirar como se podía usar lo de los roles para cambiar ciertas cosas segun el usuario.
+-Probar carrito
+
 
 
 POR HACER
--Comprobar que funciona el editar.
 
--Comprobar que al editar pero al esquivocarse se quedan los nuevos valores que has puesto.
+
 -Hacer que el campo incorrecto se ponga en rojo usando lo de los errores y una clase error.
 
 -Añadir boton de borrar y un cartelito de 'ESTÁS SEGURO?¿?'
 
--Mirar como se podía usar lo de los roles para cambiar ciertas cosas segun el usuario.
 
 
--Probar carrito
 
 
 -Crear en el header una ventana flotante que muestre mensajes de lo que ocurre.
-
-
-
-Nav admin
-    lista articulos
-    list orders
-    lista 

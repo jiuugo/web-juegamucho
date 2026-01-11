@@ -1,28 +1,31 @@
-<header>
+<header class="site-header container admin-header">
     <div class="logo">
         <a href="{{ route('dashboard') }}">
             <img src="{{ asset('images/una-tinta-peque.png') }}" alt="Logo">
         </a>
-        <h1>Panel de Administración</h1>
+        <div class="logo-info">
+            <h1 class="logo-title">Panel de Administración</h1>
+            <span class="muted">Gestión del sitio</span>
+        </div>
     </div>
-    <nav>
-        <ul>
+
+    <nav class="main-nav">
+        <ul class="nav-list">
             <li><a href="{{ route('dashboard') }}">Inicio</a></li>
-            <li><a href="{{ route('dashboard.articles') }}">Gestión de Articulos</a></li>
+            <li><a href="{{ route('dashboard.articles') }}">Artículos</a></li>
             <li><a href="{{ route('orders.index') }}">Pedidos</a></li>
-            <li><a href="{{ route('home') }}">Volver al Sitio</a></li>
         </ul>
     </nav>
-    <div>
-        <span>
-            <span class="material-icons">
-                account_circle
-            </span>
-            <span>{{ Auth::user()->name }}</span>
-        </span>
+
+    <div class="iconos">
+        <a href="{{ route('home') }}" class="button" title="Ir al sitio"><span class="material-icons">home</span></a>
         <form action="{{ route('logout') }}" method="post">
             @csrf
-            <button type="submit">Cerrar Sesión</button>
+            <button type="submit" class="btn btn-ghost">Cerrar Sesión</button>
         </form>
+        <span class="stack">
+            <span class="material-icons">account_circle</span>
+            <span>{{ Auth::user()->name }}</span>
+        </span>
     </div>
 </header>

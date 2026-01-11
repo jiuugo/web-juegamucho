@@ -3,7 +3,7 @@
 @section('main-content')
     <h1>Lista de Pedidos</h1>
     <div>
-        <table>
+        <table class="table-admin">
             <thead>
                 <tr>
                     <th>ID Pedido</th>

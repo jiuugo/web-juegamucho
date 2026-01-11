@@ -35,6 +35,10 @@
                 <p>No hay artículos en este pedido.</p>
             @endif
         </div>
-        <p><a href="{{ route('orders.index') }}">Volver a la lista de pedidos</a></p>
+        @role('admin')
+            <p><a href="{{ route('orders.index') }}">Volver a la lista de pedidos</a></p>
+        @else
+            <p><a href="{{ route('articles') }}">Volver a artículos</a></p>
+        @endrole
     </div>
 @endsection
