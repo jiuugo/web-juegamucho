@@ -49,6 +49,42 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function indexAdmin(Request $request)
+    {
+        $articles = Article::query();
+
+        if ($request->filled('brand')) {
+            $articles->where('brand_id', $request->input('brand'));
+        }
+
+        if ($request->filled('category')) {
+            $articles->where('category_id', $request->input('category'));
+        }
+
+        if ($request->filled('max_price')) {
+            $articles->where('price', '<=', $request->input('max_price'));
+        }
+
+        if ($request->filled('age')) {
+            $articles->where('min_age', '<=', $request->input('age'))
+                ->where('max_age', '>=', $request->input('age'));
+        }
+
+        $articles = $articles->get();
+
+        $brands = Brand::all();
+        $categories = Category::all();
+
+        $cart = session()->get('cart', []);
+
+        return view('admin.articles.index')->with([
+            'articles' => $articles,
+            'brands' => $brands,
+            'categories' => $categories,
+            'cart' => $cart
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -96,6 +132,13 @@ class ArticleController extends Controller
         return view('articles.show')->with(['article' => $article, 'cart' => $cart]);
     }
 
+    public function showAdmin(Article $article)
+    {
+        $cart = session()->get('cart', []);
+
+        return view('admin.articles.show')->with(['article' => $article, 'cart' => $cart]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -130,7 +173,7 @@ class ArticleController extends Controller
 
         $article->update($validatedData);
 
-        return view('articles.show')->with(['article' => $article]);
+        return view('admin.articles.show')->with(['article' => $article]);
     }
 
     /**
@@ -140,6 +183,6 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect()->route('articles.index');
+        return redirect()->route('dashboard.articles');
     }
 }

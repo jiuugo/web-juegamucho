@@ -8,8 +8,8 @@
     <nav>
         <ul>
             <li><a href="{{ route('dashboard') }}">Inicio</a></li>
-            <li><a href="">Gestión de Articulos</a></li>
-            <li><a href="">Pedidos</a></li>
+            <li><a href="{{ route('dashboard.articles') }}">Gestión de Articulos</a></li>
+            <li><a href="{{ route('orders.index') }}">Pedidos</a></li>
             <li><a href="{{ route('home') }}">Volver al Sitio</a></li>
         </ul>
     </nav>

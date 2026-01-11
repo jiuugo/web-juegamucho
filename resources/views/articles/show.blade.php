@@ -23,6 +23,7 @@
                         add_shopping_cart
                     </span></button>
             </form>
+            <button><a href="{{ route('cart.index') }}"><span class="material-icons">shopping_cart</span></a></button>
         @else
             <button><a href="{{ route('login') }}"><span class="material-icons">
                         add_shopping_cart

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -43,7 +44,7 @@ class OrderController extends Controller
 
         $order = Order::create([
             'total_price' => $totalPrice,
-            'user_id' => auth()->id(),
+            'user_id' => Auth::user()->id,
         ]);
 
         foreach ($cart as $item) {
